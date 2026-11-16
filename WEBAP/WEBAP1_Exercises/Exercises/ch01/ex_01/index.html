@@ -1,21 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Exercise 1.1</title>
     <link rel="stylesheet" href="../../../assets/exercise.css">
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script>
-        $(document).ready(function()
-        {
-            // TODO: bind a click event to every button (b1 … b8)
+        $(document).ready(function () {
+            function clearAll() {
+                $("p").css("background-color", "white");
+            }
+            function highlight(selector) {
+                clearAll();
+                $(selector).css("background-color", "yellow");
+            }
 
-            // TODO: highlight the selected elements with css("background-color", "yellow")
-
-            // TODO: #reset removes all backgrounds
+            $("#b1").click(function () {
+                highlight("p");
+            });
+            $("#b2").click(function () {
+                highlight("#left");
+            });
+            $("#b3").click(function () {
+                highlight("#left p");
+            });
+            $("#b4").click(function () {
+                highlight(".special");
+            });
+            $("#b5").click(function () {
+                highlight("p.special");
+            });
+            $("#b6").click(function () {
+                highlight("div#right p.special");
+            });
+            $("#b7").click(function () {
+                highlight("#page p");
+            });
+            $("#b8").click(function () {
+                highlight("#page < p");
+            });
+            $("#reset").click(function () {
+                clearAll();
+            });
         });
+    
     </script>
 </head>
+
 <body>
     <h2>Exercise 1.1 – Selectors</h2>
     <div id="buttons">
@@ -45,4 +77,5 @@
         </div>
     </div>
 </body>
+
 </html>

@@ -9,6 +9,10 @@
         $(document).ready(function()
         {
             // TODO: #load: read the file name with val() and load <name>.txt into #output
+                $("#load").click(function() {
+                    $("#output").load($("#file").val() + ".txt");
+                })
+            
         });
     </script>
 </head>
