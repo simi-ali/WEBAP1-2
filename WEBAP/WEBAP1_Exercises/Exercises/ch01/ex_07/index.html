@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Exercise 1.7</title>
@@ -8,55 +9,45 @@
     <script>
         // TODO: rewrite the following plain JavaScript code with jQuery
 
-        document.addEventListener("DOMContentLoaded", function()
-        {
-            document.getElementById("setTitle").addEventListener("click", function()
-            {
-                let text = document.getElementById("newTitle").value;
-                document.getElementById("title").textContent = text;
-                document.getElementById("newTitle").value = "";
+        $(document).ready(function () {
+            $("#setTitle").click(function () {
+                let newTitle = $("#newTitle").val();
+                if (newTitle !== "") {
+                    $("#title").text(newTitle);
+                    $("#newTitle").val("");
+                }
             });
 
-            document.getElementById("toggleTheme").addEventListener("click", function()
-            {
-                document.body.classList.toggle("dark");
+            $("#toggleTheme").click(function () {
+                $("body").toggleClass("dark");
             });
 
-            let box = document.getElementById("colorBox");
-            box.addEventListener("mouseenter", function()
-            {
-                box.style.backgroundColor = "orange";
-            });
-            box.addEventListener("mouseleave", function()
-            {
-                box.style.backgroundColor = "";
+            $("#colorBox").mouseenter(function () {
+                $(".box").css("background-color", "orange");
+            }).mouseleave(function () {
+                $(".box").css("background-color", "");
             });
 
-            document.getElementById("plus").addEventListener("click", function()
-            {
-                let counter = document.getElementById("counter");
-                counter.innerHTML = Number(counter.innerHTML) + 1;
-            });
+            $("#plus").click(function(){
+                $("#counter").val(parseInt($("#counter").val()) + 1);
+            })
 
-            document.getElementById("size").addEventListener("change", function()
-            {
+            document.getElementById("size").addEventListener("change", function () {
                 document.getElementById("sample").style.fontSize = this.value;
             });
 
-            document.getElementById("show").addEventListener("change", function()
-            {
-                if (this.checked)
-                {
+            document.getElementById("show").addEventListener("change", function () {
+                if (this.checked) {
                     document.getElementById("secret").style.display = "";
                 }
-                else
-                {
+                else {
                     document.getElementById("secret").style.display = "none";
                 }
             });
         });
     </script>
 </head>
+
 <body>
     <h2 id="title">Exercise 1.7 – From JavaScript to jQuery</h2>
 
@@ -85,4 +76,5 @@
     <p><label><input type="checkbox" id="show"> Show the secret</label></p>
     <p id="secret" style="display: none">jQuery is just JavaScript!</p>
 </body>
+
 </html>
