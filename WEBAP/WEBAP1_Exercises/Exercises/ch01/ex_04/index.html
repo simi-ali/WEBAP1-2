@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Exercise 1.4</title>
     <link rel="stylesheet" href="../../../assets/exercise.css">
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script>
-        $(document).ready(function()
-        {
+        $(document).ready(function () {
             // TODO: #calc: read #a, #b and #op, convert the values to numbers and display the result in #result
+            /*let a = $("#a").val();
+            let b = $("#b").val();
+            let op = $("#op").val();
+            */
 
-            // TODO: error messages for invalid input and division by zero
+            $("#calc").click(function () {
+                let a = parseFloat($("#a").val());
+                let b = parseFloat($("#b").val());
+                let op = ($("#op").val());
+
+                if (isNaN(a) || isNaN(b)) {
+                    $("#result").text("Fill in all fields.").addClass("error");
+                    $("#a, #b").focus();
+                }
+
+                else if (op === "/" && b === 0) {
+                    $("#result").text("Division by zero is not allowed.").addClass("error");
+                    $("#b").focus();
+
+                }
+                else {
+                    $("#result").text(a + " " + op + " " + b + " = " + eval(a + op + b)).removeClass("error");
+                }
+
+            });
         });
+
     </script>
 </head>
+
 <body>
     <h2>Exercise 1.4 – Calculator</h2>
     <p>
@@ -29,4 +54,5 @@
         <span id="result" class="result"></span>
     </p>
 </body>
+
 </html>

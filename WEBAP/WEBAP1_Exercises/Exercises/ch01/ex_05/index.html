@@ -9,6 +9,32 @@
         $(document).ready(function()
         {
             // TODO: #summary: display all values in the list #output
+            $("#summary").click(function() {
+                let name = $("name").val();
+                if (name !== "") {
+                    $("#summary").prop("disabled", false);
+                }
+                
+                let email = $("#email").val();
+                let className = $("#class").val();
+                let language = $("").val();
+                let newsletter = $("#newsletter").val();
+                let remarks = $("#remarks").val();
+
+                $("#output").html(
+                    "<li>Name: " + name + "</li>" +
+                    "<li>Email: " + email + "</li>" + 
+                    "<li>Class: " + className + "</li>" +
+                    "<li>Language: " + language + "</li>" +
+                    "<li>Newsletter: " + newsletter + "</li>" +
+                    "<li>Remarks: " + remarks + "</li>"
+                )
+
+                if (name !== "") {
+                    $("#summary").prop("disabled", false);
+                
+                }
+            });
 
             // TODO: enable/disable #summary depending on the name field (event input)
 
