@@ -1,26 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Exercise 1.8</title>
     <link rel="stylesheet" href="../../../assets/exercise.css">
     <style>
-        .answer { display: none; }
-        .question { cursor: pointer; }
-        .question.open { color: #c0392b; }
+        .answer {
+            display: none;
+        }
+
+        .question {
+            cursor: pointer;
+        }
+
+        .question.open {
+            color: #c0392b;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script>
-        $(document).ready(function()
-        {
+        $(document).ready(function () {
+
+            let numberOfAnswers = 0;
+            updateBar();
             // TODO: click on a .question: slideToggle() the answer, toggle the class open
+            $(".question").click(function () {
+                $(this).next(".answer").slideToggle();
+                $(this).toggleClass("open");
+                numberOfAnswers++;
+                updateBar();
+
+            });
 
             // TODO: #showAll / #hideAll
+            $("#showAll").click(function () {
+                $(".answer").slideDown()
+                $(".question").toggleClass("open");
+                updateBar();
+            });
 
-            // TODO: animate the width of #bar
+            $("#hideAll").click(function () {
+                $(".answer").slideUp();
+                $(".question").toggleClass("open");
+                updateBar();
+            });
+
+            function updateBar() {
+                // TODO: animate the width of #bar
+                $("#bar").animate({ width: (25 * numberOfAnswers) + "%" }, "slow")
+            }
+
+
         });
     </script>
 </head>
+
 <body>
     <h2>Exercise 1.8 – FAQ with animations</h2>
     <p>
@@ -39,4 +74,5 @@
     </div>
     <div id="bar" class="bar"></div>
 </body>
+
 </html>

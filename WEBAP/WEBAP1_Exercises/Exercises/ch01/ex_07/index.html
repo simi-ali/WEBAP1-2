@@ -28,21 +28,19 @@
                 $(".box").css("background-color", "");
             });
 
-            $("#plus").click(function(){
-                $("#counter").val(parseInt($("#counter").val()) + 1);
-            })
-
-            document.getElementById("size").addEventListener("change", function () {
-                document.getElementById("sample").style.fontSize = this.value;
+            $("#plus").click(function () {
+                let counter = parseInt($("#counter").text());
+                counter++;
+                $("#counter").text(counter);
             });
 
-            document.getElementById("show").addEventListener("change", function () {
-                if (this.checked) {
-                    document.getElementById("secret").style.display = "";
-                }
-                else {
-                    document.getElementById("secret").style.display = "none";
-                }
+            $("#size").change(function () {
+                $("#sample").css("font-size", $(this).val());
+            });
+
+            $("#show").change(function () {
+                $("#secret").toggle(this);
+
             });
         });
     </script>
