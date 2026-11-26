@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>A1 – Task 4</title>
     <link rel="stylesheet" href="../../../assets/exercise.css">
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script>
-        $(document).ready(function()
-        {
+        $(document).ready(function () {
             // TODO: #load: load cars.txt, split the text at ';' and add one <option> per brand
+            $("#load").click(function () {
+                let cars = $("options").load("cars.txt")
+                $.get("cars.txt", function (data) {
+                    data.split(";");
+                    $("#brands").append("<option>" + $.get("cars.txt") + "</option");
+                })
+            })
+
         });
     </script>
 </head>
+
 <body>
     <select id="brands"></select>
     <button id="load">Load brands</button>
 </body>
+
 </html>

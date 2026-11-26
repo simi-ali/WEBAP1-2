@@ -23,13 +23,16 @@
         $(document).ready(function () {
 
             let numberOfAnswers = 0;
-            updateBar();
             // TODO: click on a .question: slideToggle() the answer, toggle the class open
             $(".question").click(function () {
                 $(this).next(".answer").slideToggle();
                 $(this).toggleClass("open");
-                numberOfAnswers++;
-                updateBar();
+                if ($(this).hasClass("open")) {
+                    numberOfAnswers++;
+                } else {
+                    numberOfAnswers--;
+                }
+                $("#bar").animate({ width: (25 * numberOfAnswers) + "%" }, "slow")
 
             });
 
@@ -37,20 +40,14 @@
             $("#showAll").click(function () {
                 $(".answer").slideDown()
                 $(".question").toggleClass("open");
-                updateBar();
+                $("#bar").animate({ width: "100%" }, "slow")
             });
 
             $("#hideAll").click(function () {
                 $(".answer").slideUp();
                 $(".question").toggleClass("open");
-                updateBar();
+                $("#bar").animate({ width: "0%" }, "slow")
             });
-
-            function updateBar() {
-                // TODO: animate the width of #bar
-                $("#bar").animate({ width: (25 * numberOfAnswers) + "%" }, "slow")
-            }
-
 
         });
     </script>

@@ -9,6 +9,17 @@
         $(document).ready(function()
         {
             // TODO: load the corresponding text file when a link is clicked
+            $("#welcome").click(function(){
+                $("#output").load("welcome.txt");
+            });
+
+            $("#news").click(function(){
+                $("#output").load("news.txt");
+            });
+
+            $("#about").click(function(){
+                $("#output").load("about.txt");
+            });
         });
     </script>
 </head>
